@@ -2,6 +2,8 @@
 
 For those that are familiar with software full stack development, deployment is a key skill in DevOps that make a software system available for use, and nowadays, it is commonly achieved through the cloud via services such as Microsoft's Azure and Amazon's AWS. Similarly, a data scientist can also deploy machine learning models via cloud services for production level applications. 
 
+**NOTE: The examply.ipynb contains all the code discussed in this tutorial, and all files used in this tutorial can be fold in this folder.**
+
 ## Software Installations and Prerequisites 
 
 1. Python or Anaconda 
