@@ -18,6 +18,8 @@ In order for you to follow along with this documentation, you must have the foll
 You will also need the following account.
 1. [Microsoft Azure](https://azure.microsoft.com/en-us/)
 
+Please note that you need a subscription to use Microsoft Azure services in this tutorial. Students can get $100 credits for free [here](https://azure.microsoft.com/en-us/free/students/). If you are not eligible for that, please consider signing up for Free Trial [here](https://azure.microsoft.com/en-us/free/). If you are also not eligible for that and choose to spend money, please be very mindful of the cost of the resources you deploy.
+
 ## Creating Your Bot
 1. Click on "Create New".
 <img src="https://github.com/Sakyawira/Readability-Bot/blob/main/Media/CreateNew.png?raw=true" />
@@ -76,9 +78,7 @@ You will also need the following account.
 
 12. Now that we have both our Prediction and Authoring Resource, we must assign them to our Bot Composer profile.
 
-
 13. Go to Bot Composer, go to Publish > Publishing Profile > yourProfile > Edit.
-
 
 14. Instead of Creating New Resources, we now want to import existing resources. 
 <img src="https://github.com/Sakyawira/Readability-Bot/blob/main/Media/ConfigResources.png?raw=true" />
@@ -90,12 +90,26 @@ You will also need the following account.
 <img src="https://github.com/Sakyawira/Readability-Bot/blob/main/Media/luisPrediction.png?raw=true" />
 
 16. Scroll down and fill the luis settings with the Key and Endpoints that can be found in your respective authoring and prediction resources on Azure Portal.
+
 <img src="https://github.com/Sakyawira/Readability-Bot/blob/main/Media/luisSettings.png?raw=true" />
 
 17. Click import.
 
-
 18. Go back to Publish and Publishh the Bot. Wait a couple of minutes and your bot should be published.
+
+### IMPORTANT: One of the resources will actually be created using the S1 pricing. You want to change this.
+
+19. The resource in question is the App Service Plan. I am going to teach you how to change the Azure Pricing as this is something that you might encounter down the line.
+
+20. Go back to Azure Portal. Go to the resource group you created and find the one with type "App Service Plan".
+
+<img src="https://github.com/Sakyawira/Readability-Bot/blob/main/Media/cahnge%20price.png?raw=true" />
+
+21. Click on "Scale Up", and then pick the F1 category. And then click on Apply.
+
+<img src="https://github.com/Sakyawira/Readability-Bot/blob/main/Media/scaledown.PNG?raw=true" />
+
+22. In the future, if you feel like spending more money and making your service faster, feel free to change the plan again.
 
 ## Create Intent and Entities
 
