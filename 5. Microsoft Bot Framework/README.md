@@ -2,13 +2,13 @@
 Hey, this document will walk you through setting up a Bot Framework bot using the Bot Composer and LUIS.
 
 ## Overview
-1. [Prerequisite](https://github.com/Sakyawira/Readability-Bot/tree/main#prerequisite)
-2. [Creating Your Bot](https://github.com/Sakyawira/Readability-Bot/tree/main#creating-your-bot)
-3. [Deploying Your Bot](https://github.com/Sakyawira/Readability-Bot/tree/main#deploying-your-bot)
-4. [Create Intent and Entities](https://github.com/Sakyawira/Readability-Bot/tree/main#create-intent-and-entities)
-5. [Dialog System](https://github.com/Sakyawira/ClothPhysics#dialog-system)
-6. [Testing Your Bot](https://github.com/Sakyawira/Readability-Bot/tree/main#testing-your-bot)
-7. [Calling an API](https://github.com/Sakyawira/Readability-Bot/tree/main#calling-an-API)
+1. [Prerequisite](https://github.com/NZMSA/2021-Phase-2-Data-Science/blob/master/5.%20Microsoft%20Bot%20Framework/README.md#prerequisite)
+2. [Creating Your Bot](https://github.com/NZMSA/2021-Phase-2-Data-Science/blob/master/5.%20Microsoft%20Bot%20Framework/README.md#creating-your-bot)
+3. [Deploying Your Bot](https://github.com/NZMSA/2021-Phase-2-Data-Science/blob/master/5.%20Microsoft%20Bot%20Framework/README.md#deploying-your-bot)
+4. [Create Intent and Entities](https://github.com/NZMSA/2021-Phase-2-Data-Science/blob/master/5.%20Microsoft%20Bot%20Framework/README.md#create-intent-and-entities)
+5. [Dialog System](https://github.com/NZMSA/2021-Phase-2-Data-Science/blob/master/5.%20Microsoft%20Bot%20Framework/README.md#dialog-system)
+6. [Testing Your Bot](https://github.com/NZMSA/2021-Phase-2-Data-Science/blob/master/5.%20Microsoft%20Bot%20Framework/README.md#testing-your-bot)
+7. [Calling an API](https://github.com/NZMSA/2021-Phase-2-Data-Science/blob/master/5.%20Microsoft%20Bot%20Framework/README.md#calling-an-API)
 
 ## Prerequisite
 For you to follow along with this documentation, you must have the following and their dependencies installed on your computer.
