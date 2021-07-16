@@ -206,6 +206,6 @@ And that's it. Go ahead and Restart your Bot and Chat, and it should show someth
 
 <img src="https://github.com/Sakyawira/Readability-Bot/blob/main/Media/fate.PNG?raw=true" />
 
-As a bonus, here's a reference on how my dialog looks like at the end of this. For reference ;) Therea are things I did not go through, but should be easy if you got everything I explained. Good luck!
+As a bonus, here's a reference on how my dialog looks like at the end of this, for reference ;) Please not that there are things I did not go through, but should be easy for you to figure out at this stage. Good luck!
 
 <img src="https://github.com/Sakyawira/Readability-Bot/blob/main/Media/dialogtree.PNG?raw=true" />
