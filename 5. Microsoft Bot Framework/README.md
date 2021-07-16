@@ -137,7 +137,9 @@ Go to the FethAnimeTrigger, and click on the small blue plus sign. Select "Creat
 So, now your bot will be able to do different things based on whether it recognises any anime title in your sentence.
 
 Next up, we want the bot to Set a property for us to use. This is basically like setting a global variable. Click the blue plus sign under "True", and select "Manage Properties > Set a Property". On the property dialog box, paste "user.anime", on the value paste "=@anime".
+
 <img src="https://github.com/Sakyawira/Readability-Bot/blob/main/Media/setprop.PNG?raw=true" />
+
 Now let's make the bot Send a Response to us. Under the Set a Property node, click the blue plus sign again. This time we want to use the "Send a response" node. On the Responses dialog box, paste in this code:
 
 ```
