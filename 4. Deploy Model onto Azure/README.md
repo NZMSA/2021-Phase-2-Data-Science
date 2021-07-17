@@ -1,16 +1,18 @@
 # Model Deployment 
 
-For those that are familiar with software full stack development, deployment is a key skill in DevOps that make a software system available for use, and nowadays, it is commonly achieved through the cloud via services such as Microsoft's Azure and Amazon's AWS. Similarly, a data scientist can also deploy machine learning models via cloud services for production level applications. 
+For those that are familiar with full stack software development, deployment is a key skill in DevOps that make a software system available for use, and nowadays, it is commonly achieved through the cloud via services such as Microsoft's Azure and Amazon's AWS. Similarly, a data scientist can also deploy machine learning models via cloud services for production level applications. 
 
-**NOTE: The examply.ipynb contains all the code discussed in this tutorial, and all files used in this tutorial can be fold in this folder.**
+**NOTE: The "example" folder contains all the sample code used in this tutorial**
 
 ## Software Installations and Prerequisites 
 
-1. Python or Anaconda 
-
-2. ```pip install azureml-core```
+1. Microsoft Azure (Student account)
+2. Python or Anaconda 
+3. ```pip install azureml-core```
 
 ## Microsoft Azure - Machine Learning (Setup)
+
+We need to setup a cloud service to host our machine learning model, and in this tutorial we will be using Microsoft Azure Machine Learning Studio.
 
 1. Go to the Microsoft Azure dashboard
 
@@ -38,9 +40,14 @@ For those that are familiar with software full stack development, deployment is 
 
 ### Model Training 
 
-Before we host/deploy our model we would first need to train one. In this example, I trained a XGBoost model on the iris dataset. In the phase 2 project, you would be training on ... so you need to adapt this guide to fit the types of model you are training, but it should mostly be the same. If you are stuck you can access the Microsoft documentation ... However, feel free to use this sample code to practice how to train a model and then deploy it.
+Before we host/deploy our model we would first need to train one. In this example, I trained a XGBoost model on the well known iris dataset. 
+
+For the MSA data science phase 2 project, you would be training on the CommonLit Readability data from the [Kaggle]( https://www.kaggle.com/c/commonlitreadabilityprize/overview Kaggle) competition. Therefore, you need to adapt this guide to fit the types of model you might be training, but the overall deployment process should be the same. If you are stuck you can access the [Official Microsoft Documentation](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-deploy-and-where?tabs=azcli) which will guide you to deploying any type of machine learning model.
+
+Feel free to use this sample code and practice how to train a model then deploy it :)
 
 ```python
+# Example model training on the iris dataset 
 # Load libraries for creating a xgboost model of the iris dataset 
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
@@ -62,19 +69,19 @@ xgbClf.save_model("model.json")
 
 ### Model Deployment 
 
-Now that we have a fully trained model and would like to deploy it, we can do this either via our Jupyter Notebook in Python or online through the Machine Learning Studio. I will do so with the Jupyter Notebook approach. 
+Assuming that we have a fully trained machine learning model, we can deploy it either via our Jupyter Notebook in Python or online through the Machine Learning Studio. Deploying via Python code is easier and more well documented, so I recommend you do that. 
 
-1. First we need the azureml-core Python module. So we can install this with 
+1. First we need the azureml-core Python module. Install this in a command window of your choice 
 
    ```pip install azureml-core``` 
 
-   in a terminal. NOTE: If you are running into a ruamel error, scroll down to the troubleshooting section at the bottom.
+   **NOTE: If you are running into a ruamel error, scroll down to the troubleshooting section at the bottom.**
 
-2. Navigate to the azure portal and find the machine learning resource that you created earlier and download the ```config.json``` file. Save this to your working directory of your Jupyter Notebook as we will need this config file to connect to our machine learning workspace and deploy the model.
+2. Navigate to the azure portal and find the machine learning resource that you created earlier and download the ```config.json``` file. Save this to your working directory of your Jupyter Notebook as we will need this config file to connect our machine learning workspace and deploy our model.
 
    ![download.config](./images/download.config.png)
 
-3. Now in our Python code we will need to connect to our workspace
+3. Connect to our workspace
 
 ```python
 # Load workspace 
@@ -83,11 +90,17 @@ ws = Workspace.from_config(path = "config.json")
 print(ws)
 ```
 
-If you run this code in Jupyter Notebook, it should open a web browser window where you have to sign-in to azure. Follow the instructions there and if you connect successfully, you should be connected to your workspace. 
+If you run this code in Jupyter Notebook, it should open a web browser window where you have to sign-in to Azure. Follow the instructions there and you should see an output Workspace.create(...) if you connected successfully. 
 
 ![workspace.connect](./images/workspace.connect.png)
 
-4. Now we want to register our model that we saved earlier with the appropriate model name 
+**Note: You may encounter connection errors to your Azure ML workspace. I found that the connection hangs even if you sign-in successfully. Things you may want to try to fix any connection errors:****
+
+- **Clear cache and sign-out of Azure**
+- **Try incognito mode or alternative web browser**
+- **Run this chunk of code in a Google Colab (in your browser) and connect there once then try again in your local Jupyter Notebook**
+
+4. Register our model that we saved earlier with the appropriate model name 
 
 ```python
 from azureml.core.model import Model
@@ -96,7 +109,7 @@ from azureml.core.model import Model
 model = Model.register(ws, model_name = "iris-xgboost", model_path = "model.json")
 ```
 
-5. Registering the model merely uploads the model file onto the cloud, but there is no code/instructions to interface it. We need to create an entry script file (scoring file) that will be run when we receive data and pass it to the model and the returns the model's response to the client. ***The script is therefore specific to your model***. According to the documentation, the entry script requires two things 
+5. Registering the model merely uploads a model file onto the cloud, but there is no code/instructions to interface with it. We need to create an entry script file (scoring file) that will run when we receive data. This file should load the model, process the data and return the model's response to the client. ***The script is therefore specific to your model***. According to the documentation, the entry script requires two things:
 
    1. Loading your model using a function called ```init()```
    2. Running model on the input data using a function called ```run()```
@@ -131,11 +144,10 @@ model = Model.register(ws, model_name = "iris-xgboost", model_path = "model.json
 
    ***For your project, you must be able to write an entry script that works specifically to your model.*** 
 
-6. After registering our model, we then need to setup the remote virtual environment. Under the hood, Microsoft is creating a docker containing that contains our Python environment that runs our model and interfacing achieved via a REST API. 
+6. After registering our model, we need to setup the remote virtual environment. Under the hood, Microsoft is creating a docker containing that contains our Python environment running our model. Interfacing with our model is achieved via REST API. 
 
-   We want the remote environment to have exactly the same Python versions/modules as our local machine. I have noticed that using the ```Environment.from_existing_conda_environment()``` method results in deployment errors, but is the easiest way so try this first.
-
-   If you are receiving deployment errors associated with setting up the environment then try the second method where we manually add packages as needed.
+   1. We want the remote environment to have exactly the same Python versions/modules as our local machine. I have noticed that using the ```Environment.from_existing_conda_environment()``` method results in deployment errors, but is the easiest way so try this first.
+   2. If you are receiving deployment errors then try the second method which is to manually add packages as required.
 
 ```python
 from azureml.core import Environment
