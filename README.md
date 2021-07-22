@@ -2,13 +2,21 @@
 
 
 # Assignment
-*tbd
+
+* The Data Science Stream Assignment can be found here: [2021-MSA-Phase2-Data-Science.pdf](https://github.com/NZMSA/2021-Phase2-Assignments/blob/main/2021-MSA-Phase2-Data-Science.pdf)
+
+# What to Bring
+* Laptop & charger and power extension cord
+* Snacks, lunch, and water
+* And a Fresh mind 😃
 
 # Software Needed
-*tbd
 
-
-## Microsoft Azure Subscription
+✅ Register for Kaggle (https://www.kaggle.com/) and join the [CommonLit Readability Prize Challenge](https://www.kaggle.com/c/commonlitreadabilityprize)<br>
+✅ Install [Python](https://www.python.org/downloads/) or [Anaconda](https://www.anaconda.com/products/individual)<br>
+✅ Install the following libraries for python: [pandas](https://pandas.pydata.org/), [jupyter](https://jupyter.org/install), [scikit-learn](https://scikit-learn.org/), [beautifulsoup](https://beautiful-soup-4.readthedocs.io/en/latest/), [requests](https://docs.python-requests.org/en/master/), [pytorch](https://pytorch.org/), [azureml-core](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core?view=azure-ml-py) <br>
+✅ Register for an Azure account (https://azure.microsoft.com/en-us/free/students/) <br>
+✅ Register for a GitHub Account (https://github.com/) - For hosting & storing our project.<br>
 
 
 
