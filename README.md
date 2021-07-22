@@ -1,4 +1,6 @@
 # Microsoft Student Accelerator 2021 Phase 2 Training - Data Science Stream
+The official repository and source of knowledge for MSA students taking part in MSA 2021 Data Science Phase 2 Training.
+
 
 
 # Assignment
@@ -10,8 +12,8 @@
 * Snacks, lunch, and water
 * And a Fresh mind 😃
 
-# Software Needed
-
+# Before We Start
+You need to:<br>
 ✅ Register for Kaggle (https://www.kaggle.com/) and join the [CommonLit Readability Prize Challenge](https://www.kaggle.com/c/commonlitreadabilityprize)<br>
 ✅ Install [Python](https://www.python.org/downloads/) or [Anaconda](https://www.anaconda.com/products/individual)<br>
 ✅ Install the following libraries for python: [pandas](https://pandas.pydata.org/), [jupyter](https://jupyter.org/install), [scikit-learn](https://scikit-learn.org/), [beautifulsoup](https://beautiful-soup-4.readthedocs.io/en/latest/), [requests](https://docs.python-requests.org/en/master/), [pytorch](https://pytorch.org/), [azureml-core](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core?view=azure-ml-py) <br>
