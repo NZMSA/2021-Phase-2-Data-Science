@@ -1,8 +1,6 @@
 # Microsoft Student Accelerator 2021 Phase 2 Training - Data Science Stream
 The official repository and source of knowledge for MSA students taking part in MSA 2021 Data Science Phase 2 Training.
 
-
-
 # Assignment
 
 * The Data Science Stream Assignment can be found here: [2021-MSA-Phase2-Data-Science.pdf](https://github.com/NZMSA/2021-Phase2-Assignments/blob/main/2021-MSA-Phase2-Data-Science.pdf)
@@ -22,7 +20,8 @@ You need to:<br>
 ✅ Register for an Azure account (https://azure.microsoft.com/en-us/free/students/) <br>
 ✅ Register for a GitHub Account (https://github.com/) - For hosting & storing our project.<br>
 
-
+## Microsoft Azure Subscription
+You will also need an active Azure subscription. Check out how to get your free Azure for Students subscription here: https://github.com/NZMSA/2019-Phase-1/blob/master/Azure%20For%20Students/README.md
 
 ## Stuck? 
 Post your question on our [facebook group](https://aka.ms/nzmsa) or on our [discord server](https://discord.gg/c4Y5SAZ)
