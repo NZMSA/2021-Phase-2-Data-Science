@@ -17,6 +17,8 @@ You need to:<br>
 ✅ Register for Kaggle (https://www.kaggle.com/) and join the [CommonLit Readability Prize Challenge](https://www.kaggle.com/c/commonlitreadabilityprize)<br>
 ✅ Install [Python](https://www.python.org/downloads/) or [Anaconda](https://www.anaconda.com/products/individual)<br>
 ✅ Install the following libraries for python: [pandas](https://pandas.pydata.org/), [jupyter](https://jupyter.org/install), [scikit-learn](https://scikit-learn.org/), [beautifulsoup](https://beautiful-soup-4.readthedocs.io/en/latest/), [requests](https://docs.python-requests.org/en/master/), [pytorch](https://pytorch.org/), [azureml-core](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core?view=azure-ml-py) <br>
+✅ Install [Bot Composer](https://docs.microsoft.com/en-us/composer/install-composer?tabs=windows) <br>
+✅ Install [Bot Framework Emulator](https://github.com/microsoft/BotFramework-Emulator/releases/tag/v4.13.0) <br>
 ✅ Register for an Azure account (https://azure.microsoft.com/en-us/free/students/) <br>
 ✅ Register for a GitHub Account (https://github.com/) - For hosting & storing our project.<br>
 
