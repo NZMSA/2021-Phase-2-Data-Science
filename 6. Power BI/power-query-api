@@ -1,13 +1,13 @@
 let Source = (symbol) =>
     let
         Source = Json.Document(Web.Contents(
-            "https://www.alphavantage.co/",
+            "https://www.alphavantage.co/", /// source
             [
-            RelativePath="query",
-            Query = [
+            RelativePath="query", /// adds some extra text to the base url given in the first parameter for the function
+            Query = [ /// allows you to add query parameters to the url, and is itself a record
                 function="TIME_SERIES_MONTHLY",
-                symbol=symbol,
-                apikey = APIKey
+                symbol=symbol, 
+                apikey = APIKey /// saved as parameter
             ]]
 
             ///"https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=IBM&apikey=demo"
@@ -18,5 +18,6 @@ let Source = (symbol) =>
         #"Expanded Value" = Table.ExpandRecordColumn(#"Converted to Table", "Value", {"1. open", "2. high", "3. low", "4. close", "5. volume"}, {"1. open", "2. high", "3. low", "4. close", "5. volume"})
     in
         #"Expanded Value"
+        
 in Source
 
