@@ -1,0 +1,22 @@
+let Source = (symbol) =>
+    let
+        Source = Json.Document(Web.Contents(
+            "https://www.alphavantage.co/",
+            [
+            RelativePath="query",
+            Query = [
+                function="TIME_SERIES_MONTHLY",
+                symbol=symbol,
+                apikey = APIKey
+            ]]
+
+            ///"https://www.alphavantage.co/query?function=TIME_SERIES_MONTHLY&symbol=IBM&apikey=demo"
+        )),
+        
+        #"Monthly Time Series" = Source[Monthly Time Series],
+        #"Converted to Table" = Record.ToTable(#"Monthly Time Series"),
+        #"Expanded Value" = Table.ExpandRecordColumn(#"Converted to Table", "Value", {"1. open", "2. high", "3. low", "4. close", "5. volume"}, {"1. open", "2. high", "3. low", "4. close", "5. volume"})
+    in
+        #"Expanded Value"
+in Source
+
