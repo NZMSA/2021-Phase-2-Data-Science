@@ -4,6 +4,10 @@ For those that are familiar with full stack software development, deployment is 
 
 **NOTE: The "example" folder contains all the sample code used in this tutorial**
 
+**Official Microsoft Documentation** 
+
+https://docs.microsoft.com/en-us/azure/machine-learning/how-to-deploy-and-where?tabs=azcli
+
 ## Software Installations and Prerequisites 
 
 1. Microsoft Azure (Student account)
@@ -222,6 +226,70 @@ print(response.json())
 
 ![stop.model](images/stop.model.png)
 
+## Extra for Experts
+
+Notice that the API endpoint is http and not https. Most web applications are https so there will be a blocked mixed content error when you try and interface with the API. If you had a custom domain, you can obtain a https API endpoint. As most of us do not have custom domain, we can create a Python + Flask backend wrapper to our model's API endpoint, and then deploy this separately. ***This will be useful for creating a web application, which is one of the advanced requirements that you could do.***
+
+To create the Python + Flask backend wrapper, you need to make two changes 
+
+1. Modify echo_score.py file (entry script file) and re-deploy
+2. Create the customer Python + Flask backend wrapper (then deploy it)
+
+**echo_score.py**
+
+```python
+# Load libraries 
+# ...
+from azureml.contrib.services.aml_request import AMLRequest, rawhttp
+from azureml.contrib.services.aml_response import AMLResponse
+
+# 1. Requried init function
+def init():
+	# ...
+
+# 2. Requried run function 
+# We have to modify the run function to allow for CORS so that our backend wrapper can interface with it. 
+@rawhttp
+def run(request):
+    if request.method == 'GET':
+        respBody = str.encode(request.full_path)
+        return AMLResponse(respBody, 200)
+    elif request.method == 'POST':
+        reqBody = request.get_data(False)
+		# Process the data and use the model here ...
+        
+        resp = AMLResponse(model_output, 200)
+        resp.headers['Access-Control-Allow-Origin'] = "*"
+        return resp
+    else:
+        return AMLResponse("bad request", 500)
+
+```
+
+**app.py**
+
+```python
+# Python + Flask backend wrapper to model's API endpoint 
+from flask import Flask, json, request
+import requests
+from flask_cors import CORS
+
+app = Flask(__name__)
+CORS(app)
+
+@app.route('/', methods = ['POST'])
+def index():
+  if request.method == 'POST':
+    data = request.data
+  uri = "http://.....azurecontainer.io/score"  # <- Your model API endpoint here 
+  headers = {"Content-Type": "application/json"}
+  response = requests.post(uri, data = data, headers = headers)
+  return json.dumps(response.json())
+
+if __name__ == '__main__':
+  app.run() 
+```
+
 ## Troubleshooting 
 
 ### 1. ModuleNotFouondError: No module named 'ruamel'
@@ -242,8 +310,6 @@ Solution - Create a new anaconda/python virtual environment and use the downgrad
    1. ```conda activate <name of your virtual environment>```
    2. ```pip install pip==20.1.1```
    3. ```pip install azureml-core```
-
-
 
 
 
