@@ -20,6 +20,8 @@ You will also need the following account.
 
 Please note that you need a subscription to use Microsoft Azure services in this tutorial. Students can get $100 credits for free [here](https://azure.microsoft.com/en-us/free/students/). If you are not eligible for that, please consider signing up for Free Trial [here](https://azure.microsoft.com/en-us/free/). If you are also not eligible for that and choose to spend money, please be very mindful of the cost of the resources you deploy.
 
+### IMPORTANT NOTE: For those who are having errors deploying resources on Azure, try using personal email to create your Azure account. You can still get the Free Credits by adding a student email after the fact.
+
 ## Creating Your Bot
 1. Click on "Create New".
 <img src="https://github.com/Sakyawira/Readability-Bot/blob/main/Media/CreateNew.png?raw=true" />
